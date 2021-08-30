@@ -25,6 +25,8 @@ const errorDetection = (error, req, res, next) => (error instanceof SyntaxError
 const dirRoot = __dirname;
 
 app
+  .use(express.urlencoded({ extended: true }))
+  .use(express.json())
   .use(express.static(`${dirRoot.root}/public/build/buildClient/`))
   .use('/images', express.static(`${dirRoot.root}/public/images`))
   .use('/public/images', express.static(`${dirRoot.root}/public/images`))
